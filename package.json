@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Blog web app to share daily thoughts",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SherifRafik/blog.git"
+  },
+  "author": "Sherif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SherifRafik/blog/issues"
+  },
+  "homepage": "https://github.com/SherifRafik/blog#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1"
+  }
+}
