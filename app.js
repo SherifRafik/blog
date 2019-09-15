@@ -18,7 +18,7 @@ app.use(
 app.use(methodOverride("_method"));
 
 
-mongoose.connect("mongodb://localhost/blog_app", {
+mongoose.connect("mongodb+srv://blog:blogapp@cluster0-1ksmw.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
