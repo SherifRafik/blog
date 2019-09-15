@@ -1,11 +1,21 @@
 <% include ./partials/header.ejs %>
+<div class="container">
+  <div class="card-container">
+    <h1>BLOGS</h1>
+    <% blogs.forEach(blog => { %>
+    <div class="card mb-3">
+      <h3 class="card-header"><%= blog.title %></h3>
+      <img style="width: 400px;" src="<%= blog.image %>" alt="Card image">
+      <div class="card-body card-content">
+        <p class="card-text"><%= blog.content.substring(0,120) %></p>
+      </div>
+      <div class="card-body">
+        <a href="/blogs/<%= blog._id %>" class="card-link">Read more</a>
+      </div>
+      <div class="card-footer text-muted"><%- blog.date.toDateString() %></div>
+    </div>
+    <% }); %>
 
-<% blogs.forEach(blog => { %>
-<h1><%= blog.title %></h1>
-<img src="<%= blog.image %>" alt="">
-<div><%= blog.content %></div>
-<h4><%= blog.date.toDateString() %></h4>
-<a href="/blogs/<%= blog._id %>">Read More</a>
-<% }); %>
-
+  </div>
+</div>
 <% include ./partials/footer.ejs %>

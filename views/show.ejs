@@ -1,9 +1,26 @@
 <% include ./partials/header.ejs %>
-
-<h1><%= blog.title %></h1>
-<img src="<%= blog.image %>" alt="">
-<div><%= blog.content %></div>
-<h4><%= blog.date.toDateString() %></h4>
-<a href="/blogs/<%= blog._id %>/edit">Edit Here</a>
-
+<div class="container" style="padding-top: 20px;">
+  <div class="card mb-3">
+    <h3 class="card-header"><%= blog.title %></h3>
+    <div class="image-container">
+      <img style="width: 400px;" src="<%= blog.image %>" alt="Card image" class="show-image">
+    </div>
+    <div class="card-body card-content">
+      <p class="card-text"><%= blog.content %></p>
+    </div>
+    <div class="card-body">
+      <div>
+        <a href="/blogs/<%= blog._id %>/edit" class="btn btn-success" style="float: left;">Edit Here</a>
+      </div>
+      <div>
+        <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" class="delete-button">
+          <fieldset>
+            <button type="submit" class="btn btn-danger delete-button">Delete Post</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="card-footer text-muted"><%- blog.date.toDateString() %></div>
+  </div>
+</div>
 <% include ./partials/footer.ejs %>

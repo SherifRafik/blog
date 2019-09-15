@@ -2,3 +2,39 @@ form {
   width: 80%;
   margin: 2em auto 0 auto;
 }
+
+.editing-header {
+  width: 80%;
+  margin: 10px auto 0 auto;
+}
+
+.card-container {
+  width: 400px;
+  margin: 2em auto 0 auto;
+}
+
+.card-content {
+  padding: 20px 20px 5px 20px;
+}
+
+.image-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.show-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.delete-button {
+  float: right;
+  margin: 0;
+}
+
+.profile-card {
+  width: 500px;
+  margin: 0 auto;
+}

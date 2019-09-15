@@ -1,7 +1,7 @@
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
-
+const methodOverride = require("method-override");
 const app = express();
 const port = process.env.port || 5000;
 
@@ -15,10 +15,13 @@ app.use(
     extended: true
   })
 );
+app.use(methodOverride("_method"));
+
 
 mongoose.connect("mongodb://localhost/blog_app", {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 // ROUTES
@@ -53,7 +56,7 @@ app.post("/blogs", function (req, res) {
 app.get("/blogs/:id", function (req, res) {
   Blog.findById(req.params.id, function (err, blog) {
     if (err)
-      res.redirect("/blogs");
+      console.log("Error finding the instance in the database");
     else
       res.render("show", {
         blog: blog
@@ -64,12 +67,34 @@ app.get("/blogs/:id", function (req, res) {
 app.get("/blogs/:id/edit", function (req, res) {
   Blog.findById(req.params.id, function (err, blog) {
     if (err)
-      res.redirect("/blogs");
+      console.log("Error finding the instance in the database");
     else
       res.render("edit", {
         blog: blog
       });
   });
+});
+
+app.put("/blogs/:id", function (req, res) {
+  Blog.findByIdAndUpdate(req.params.id, req.body.blog, function (err, updatedBlog) {
+    if (err)
+      console.log("Error updating this blog");
+    else
+      res.redirect("/blogs" + req.params.id);
+  });
+});
+
+app.delete("/blogs/:id", function (req, res) {
+  Blog.findByIdAndDelete(req.params.id, function (err, deletedBlog) {
+    if (err)
+      console.log("Error deleting the blog");
+    else
+      res.redirect("/blogs");
+  });
+});
+
+app.get("/about-us", function (req, res) {
+  res.render("about-us");
 });
 
 app.listen(port, function () {
