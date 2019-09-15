@@ -1,0 +1,11 @@
+<% include ./partials/header.ejs %>
+
+<% blogs.forEach(blog => { %>
+<h1><%= blog.title %></h1>
+<img src="<%= blog.image %>" alt="">
+<div><%= blog.content %></div>
+<h4><%= blog.date.toDateString() %></h4>
+<a href="/blogs/<%= blog._id %>">Read More</a>
+<% }); %>
+
+<% include ./partials/footer.ejs %>

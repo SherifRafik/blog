@@ -1,0 +1,8 @@
+<% include ./partials/header.ejs %>
+
+<h1><%= blog.title %></h1>
+<img src="<%= blog.image %>" alt="">
+<div><%= blog.content %></div>
+<h4><%= blog.date.toDateString() %></h4>
+<a href="/blogs/<%= blog._id %>/edit">Edit Here</a>
+<% include ./partials/footer.ejs %>

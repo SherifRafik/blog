@@ -1,0 +1,24 @@
+<% include ./partials/header.ejs %>
+<div class="container">
+  <form action="/blogs" method="POST">
+    <fieldset>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="blog-title" name="blog[title]"
+          value="<%= blog.title %>">
+      </div>
+      <div class="form-group">
+        <label for="image">Image-URL</label>
+        <input type="text" class="form-control" id="image" placeholder="blog-image-URL" name="blog[image]"
+          value="<%= blog.image %>">
+      </div>
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control" id="content" placeholder="blog-content" name="blog[content]"
+          rows="7"><%= blog.content %></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Edit</button>
+    </fieldset>
+  </form>
+</div>
+<% include ./partials/footer.ejs %>
