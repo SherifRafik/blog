@@ -31,7 +31,7 @@ app.get("/", function (req, res) {
 app.get("/blogs", function (req, res) {
   Blog.find({}, function (err, blogs) {
     if (err)
-      console.log("Error retreiving data from db");
+      console.log(err);
     else
       res.render("index", {
         blogs: blogs
@@ -46,7 +46,7 @@ app.get("/blogs/new", function (req, res) {
 app.post("/blogs", function (req, res) {
   Blog.create(req.body.blog, function (err, newBlog) {
     if (err)
-      console.log("Error creating a new instance in the database");
+      console.log(err);
     else
       res.redirect("/blogs");
   });
@@ -55,7 +55,7 @@ app.post("/blogs", function (req, res) {
 app.get("/blogs/:id", function (req, res) {
   Blog.findById(req.params.id, function (err, blog) {
     if (err)
-      console.log("Error finding the instance in the database");
+      console.log(err);
     else
       res.render("show", {
         blog: blog
@@ -66,7 +66,7 @@ app.get("/blogs/:id", function (req, res) {
 app.get("/blogs/:id/edit", function (req, res) {
   Blog.findById(req.params.id, function (err, blog) {
     if (err)
-      console.log("Error finding the instance in the database");
+      console.log(err + "Here");
     else
       res.render("edit", {
         blog: blog
@@ -77,16 +77,16 @@ app.get("/blogs/:id/edit", function (req, res) {
 app.put("/blogs/:id", function (req, res) {
   Blog.findByIdAndUpdate(req.params.id, req.body.blog, function (err, updatedBlog) {
     if (err)
-      console.log("Error updating this blog");
+      console.log(err);
     else
-      res.redirect("/blogs" + req.params.id);
+      res.redirect("/blogs/" + req.params.id);
   });
 });
 
 app.delete("/blogs/:id", function (req, res) {
   Blog.findByIdAndDelete(req.params.id, function (err, deletedBlog) {
     if (err)
-      console.log("Error deleting the blog");
+      console.log(err);
     else
       res.redirect("/blogs");
   });
