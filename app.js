@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const express = require("express");
 const methodOverride = require("method-override");
 const app = express();
-const port = process.env.port || 5000;
 
 const Blog = require("./models/blog");
 
@@ -97,6 +96,6 @@ app.get("/about-us", function (req, res) {
   res.render("about-us");
 });
 
-app.listen(port, function () {
+app.listen(process.env.PORT || 5000, function () {
   console.log("Server has started on port " + port);
 });
