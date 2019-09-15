@@ -96,6 +96,7 @@ app.get("/about-us", function (req, res) {
   res.render("about-us");
 });
 
-app.listen(process.env.PORT || 5000, function () {
+let port = process.env.PORT || 5000
+app.listen(port, function () {
   console.log("Server has started on port " + port);
 });
