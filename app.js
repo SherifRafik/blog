@@ -17,7 +17,8 @@ app.use(
 app.use(methodOverride("_method"));
 
 
-mongoose.connect("mongodb+srv://blog:blogapp@cluster0-1ksmw.mongodb.net/test", {
+const URI = "mongodb+srv://blog:blogapp@cluster0-1ksmw.mongodb.net/test?retryWrites=true&w=majority"
+mongoose.connect(URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
